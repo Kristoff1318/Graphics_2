@@ -26,44 +26,40 @@ def recursion_draw(p1, p2, p3, c):
         c[2] %= 256
         recursion_draw(p1n, p2n, p3n, c)
 
+#octants 1 and 5
+draw_line(0, 0, XRES-1, YRES-1, s, c)
+draw_line(0, 0, XRES-1, YRES / 2, s, c) 
+draw_line(XRES-1, YRES-1, 0, YRES / 2, s, c)
 
-# #octants 1 and 5
-# draw_line(0, 0, XRES-1, YRES-1, s, c)
-# draw_line(0, 0, XRES-1, YRES / 2, s, c) 
-# draw_line(XRES-1, YRES-1, 0, YRES / 2, s, c)
+#octants 8 and 4
+c[BLUE] = 255;
+draw_line(0, YRES-1, XRES-1, 0, s, c);  
+draw_line(0, YRES-1, XRES-1, YRES/2, s, c);
+draw_line(XRES-1, 0, 0, YRES/2, s, c);
 
-# #octants 8 and 4
-# c[BLUE] = 255;
-# draw_line(0, YRES-1, XRES-1, 0, s, c);  
-# draw_line(0, YRES-1, XRES-1, YRES/2, s, c);
-# draw_line(XRES-1, 0, 0, YRES/2, s, c);
+#octants 2 and 6
+c[RED] = 255;
+c[GREEN] = 0;
+c[BLUE] = 0;
+draw_line(0, 0, XRES/2, YRES-1, s, c);
+draw_line(XRES-1, YRES-1, XRES/2, 0, s, c);
 
-# #octants 2 and 6
-# c[RED] = 255;
-# c[GREEN] = 0;
-# c[BLUE] = 0;
-# draw_line(0, 0, XRES/2, YRES-1, s, c);
-# draw_line(XRES-1, YRES-1, XRES/2, 0, s, c);
+#octants 7 and 3
+c[BLUE] = 255;
+draw_line(0, YRES-1, XRES/2, 0, s, c);
+draw_line(XRES-1, 0, XRES/2, YRES-1, s, c);
 
-# #octants 7 and 3
-# c[BLUE] = 255;
-# draw_line(0, YRES-1, XRES/2, 0, s, c);
-# draw_line(XRES-1, 0, XRES/2, YRES-1, s, c);
-
-# #horizontal and vertical
-# c[BLUE] = 0;
-# c[GREEN] = 255;
-# draw_line(0, YRES/2, XRES-1, YRES/2, s, c);
-# draw_line(XRES/2, 0, XRES/2, YRES-1, s, c);
+#horizontal and vertical
+c[BLUE] = 0;
+c[GREEN] = 255;
+draw_line(0, YRES/2, XRES-1, YRES/2, s, c);
+draw_line(XRES/2, 0, XRES/2, YRES-1, s, c);
 
 p1 = (0, 0)
 p2 = (XRES//2, YRES-1)
 p3 = (XRES-1, 0)
 
-
-
-
-recursion_draw(p1, p2, p3, [72, 20, 194])
+#recursion_draw(p1, p2, p3, [72, 20, 194])
 
 display(s)
 save_ppm(s, 'binary.ppm')
